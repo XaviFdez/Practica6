@@ -2,6 +2,11 @@
 ## Introducción parte práctica
 En la anterior práctica trabajamos con los buses de comunicación, en esta práctica seguiremos trabajando con estos, pero especializándonos en el bus SPI.
 
+La práctica constará de 3 partes 
+ - Lectura i escritura de memoria SD
+ -
+ -
+
 ## EJERCICIO PRÁCTICO 1 - LECTURA/ESCRITURA DE MEMORIA SD
 ```c++
 #include <SPI.h>
