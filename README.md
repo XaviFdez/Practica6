@@ -4,8 +4,7 @@ En la anterior práctica trabajamos con los buses de comunicación, en esta prá
 
 La práctica constará de 3 partes 
  - Lectura i escritura de memoria SD
- -
- -
+ - Lectura de etiqueta RFID
 
 ## EJERCICIO PRÁCTICO 1 - LECTURA/ESCRITURA DE MEMORIA SD
 ```c++
@@ -21,7 +20,7 @@ Serial.println("No se pudo inicializar");
 return;
 }
 Serial.println("inicializacion exitosa");
-myFile = SD.open("archivo.txt");//abrimos el archivo
+myFile = SD.open("archivo.txt");
 if (myFile) {
 Serial.println("archivo.txt:");
 while (myFile.available()) {
@@ -37,30 +36,43 @@ void loop()
 }
 ```
 ### Funcionamiento del código
-El principal objetivo del código 
+En este código inicializa una targeta de SD, despues abre un archivo ("archivo.txt"), una vez abierto, se lee el archivo y se envía lo que contiene por el puerto serie, y finalmente cierra el archivo.
 
-
-
+#### Funcionalidades del código:
+- ##### * Función: void setup():*
+   Este subprograma configura la comunicación serial, se intenta inicializar la tarjeta SD en el pin 4, se abre el archivo "archivo.txt" si la inicialización es exitosa, y se lee su contenido para enviarlo a través de la comunicación serial.
+ 
+ - ##### * Función: void loop():*
+   Esta función está vacía y no contiene ninguna instrucción
 
 ### Salida por el puerto serie
+Supongamos que el archivo contiene lo siguiente:
+**Este es un archivo de prueba.** 
+**1234567890**
+
+La salida por puerto serie es la siguiente:
 ```
-DESCRBIR SALIDA
+Iniciando SD ... inicializacion exitosa
+archivo.txt:
+Este es un archivo de prueba.
+1234567890
 ```
+
 ## EJERCICIO PRÁCTICO 2- LECTURA DE ETIQUETA RFID
 ```c++
 #include <SPI.h>
 #include <MFRC522.h>
-#define RST_PIN 9 //Pin 9 para el reset del RC522
-#define SS_PIN 10 //Pin 10 para el SS (SDA) del RC522
-MFRC522 mfrc522(SS_PIN, RST_PIN); //Creamos el objeto para el RC522
+#define RST_PIN 9 
+#define SS_PIN 10 
+MFRC522 mfrc522(SS_PIN, RST_PIN); 
 void setup() {
-Serial.begin(9600); //Iniciamos la comunicación serial
-SPI.begin(); //Iniciamos el Bus SPI
-mfrc522.PCD_Init(); // Iniciamos el MFRC522
+Serial.begin(9600); 
+SPI.begin(); 
+mfrc522.PCD_Init(); 
 Serial.println("Lectura del UID");
 }
 void loop() {
-// Revisamos si hay nuevas tarjetas presentes
+
 if ( mfrc522.PICC_IsNewCardPresent())
 {
 //Seleccionamos una tarjeta
