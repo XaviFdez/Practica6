@@ -47,8 +47,8 @@ En este código inicializa una targeta de SD, despues abre un archivo ("archivo.
 
 ### Salida por el puerto serie
 Supongamos que el archivo contiene lo siguiente:
-**Este es un archivo de prueba.** 
 
+**Este es un archivo de prueba.** 
 **1234567890**
 
 La salida por puerto serie es la siguiente:
