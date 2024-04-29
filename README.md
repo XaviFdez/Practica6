@@ -94,7 +94,9 @@ mfrc522.PICC_HaltA();
 }
 ```
 ### Funcionamiento del código
-El código proporcionado
+En este código se establece la comunicación con el módulo lector de tarjetas RFID MFRC522, entonces lo que hace es que escanea en busca de tarjetas RFID y, cuando detecta una, lee su UID y lo muestra en el monitor serial. Esto permite identificar de forma única cada tarjeta presente en el área de alcance del lector RFID.
+
+#### Funciones específicas del código:
 
 ### Salida por el puerto serie
 ```
