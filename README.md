@@ -107,7 +107,21 @@ Lectura del UID
 Card UID: 01 23 45 67
 
 ```
-
+### Diagrama de flujo sobre el funcionamiento
+```mermaid
+graph TD;
+    A(Inicio) --> B(Iniciar Serial);
+    B --> C(Iniciar SPI);
+    C --> D(Iniciar MFRC522);
+    D --> E(Lectura del UID);
+    E --> F{¿Nueva tarjeta presente?};
+    F -->|Sí| G{¿Leer UID de la tarjeta?};
+    F -->|No| E;
+    G -->|Sí| H(Imprimir UID);
+    H --> I(Reiniciar tarjeta actual);
+    G -->|No| F;
+    I --> F;
+```
 
 
 
